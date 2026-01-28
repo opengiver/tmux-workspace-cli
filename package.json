@@ -4,7 +4,7 @@
   "description": "Interactive tmux workspace manager - Create, edit, and manage tmux workspaces with ease",
   "type": "module",
   "bin": {
-    "tx": "./bin/tx.js"
+    "tx": "bin/tx.js"
   },
   "repository": {
     "type": "git",
