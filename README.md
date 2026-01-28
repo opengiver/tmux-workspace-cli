@@ -2,6 +2,10 @@
 
 Interactive CLI tool for managing tmux workspaces easily.
 
+[![npm version](https://img.shields.io/npm/v/tmux-workspace-cli.svg)](https://www.npmjs.com/package/tmux-workspace-cli)
+[![npm downloads](https://img.shields.io/npm/dm/tmux-workspace-cli.svg)](https://www.npmjs.com/package/tmux-workspace-cli)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 ## Features
 
 - 🎨 **Interactive workspace creation** - Build complex layouts step-by-step with navigation
@@ -13,16 +17,21 @@ Interactive CLI tool for managing tmux workspaces easily.
 
 ## Installation
 
+### Global Installation (Recommended)
+
 ```bash
-cd ~/tmux-cli
-npm install
-npm link
+npm install -g tmux-workspace-cli
 ```
 
-Create required directories:
+Required directories will be created automatically on first use.
+
+### Local Development
 
 ```bash
-mkdir -p ~/.tmux-scripts ~/.tmux-cli-configs
+git clone https://github.com/opengiver/tmux-workspace-cli.git
+cd tmux-workspace-cli
+npm install
+npm link
 ```
 
 ## Usage
