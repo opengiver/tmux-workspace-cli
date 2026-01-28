@@ -8,9 +8,17 @@ import { homedir } from 'os';
 import { readdir, readFile, writeFile, unlink, rename, mkdir } from 'fs/promises';
 import { existsSync } from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const SCRIPT_DIR = path.join(homedir(), '.tmux-scripts');
 const CONFIG_DIR = path.join(homedir(), '.tmux-cli-configs');
+
+// Read package.json for version
+const packageJsonPath = path.join(__dirname, '..', 'package.json');
+const packageJson = JSON.parse(await readFile(packageJsonPath, 'utf-8'));
 
 const program = new Command();
 
@@ -1040,6 +1048,6 @@ program
 program
   .name('tx')
   .description('Interactive tmux workspace manager')
-  .version('1.0.0');
+  .version(packageJson.version, '-v, --version', 'Output the current version');
 
 program.parse();
