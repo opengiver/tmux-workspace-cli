@@ -5,7 +5,7 @@ import inquirer from 'inquirer';
 import chalk from 'chalk';
 import { spawn } from 'child_process';
 import { homedir } from 'os';
-import { readdir, readFile, writeFile, unlink, rename } from 'fs/promises';
+import { readdir, readFile, writeFile, unlink, rename, mkdir } from 'fs/promises';
 import { existsSync } from 'fs';
 import path from 'path';
 
@@ -13,6 +13,23 @@ const SCRIPT_DIR = path.join(homedir(), '.tmux-scripts');
 const CONFIG_DIR = path.join(homedir(), '.tmux-cli-configs');
 
 const program = new Command();
+
+// Ensure required directories exist
+async function ensureDirectories() {
+  try {
+    if (!existsSync(SCRIPT_DIR)) {
+      await mkdir(SCRIPT_DIR, { recursive: true });
+    }
+    if (!existsSync(CONFIG_DIR)) {
+      await mkdir(CONFIG_DIR, { recursive: true });
+    }
+  } catch (err) {
+    console.error(chalk.red(`Failed to create directories: ${err.message}`));
+  }
+}
+
+// Initialize directories on startup
+await ensureDirectories();
 
 // Ctrl+C 핸들러 (깔끔한 종료)
 process.on('SIGINT', () => {

@@ -1,6 +1,6 @@
 {
   "name": "tmux-workspace-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Interactive tmux workspace manager - Create, edit, and manage tmux workspaces with ease",
   "type": "module",
   "bin": {
